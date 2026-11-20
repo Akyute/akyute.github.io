@@ -52,11 +52,14 @@ b, strong { font-weight: bolder; }
 
 @media (max-width: 767px) {
   html { font-size: 2.72vw; }                   /* 10.2px at 375 */
-  #header { display: none; }
+  /* Mobile: show the same tabs as desktop at the top (scrolls with the page) instead of Cargo's "+" menu */
+  #header { position: static; width: 100%; pointer-events: auto; }
+  #header .bodycopy { padding: 1.8rem 1.8rem 0; }
+  #header .hdr-tail { display: none; }
   #content { width: 100%; }
   #content .bodycopy { padding: 1.8rem; }
   #menu-btn {
-    display: block; position: fixed; top: 15px; right: 15px; z-index: 6;
+    display: none; position: fixed; top: 15px; right: 15px; z-index: 6;
     width: 34px; height: 34px; padding: 6px; margin: -6px; border: 0; background: transparent;
     cursor: pointer; color: rgba(0,0,0,.75);
   }
