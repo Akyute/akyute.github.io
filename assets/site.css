@@ -1,0 +1,112 @@
+/* Replica of akyute.com (Cargo 2 site stylesheet values) */
+html { font-size: 0.9vw; }                     /* Cargo scales rem with viewport: 12.96px at 1440 */
+html, body { margin: 0; padding: 0; }
+body {
+  background: #fff; color: #000;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+}
+a { text-decoration: none; }
+a:active { opacity: .7; }
+i, em { font-style: italic; }
+b, strong { font-weight: bolder; }
+
+.bodycopy {
+  display: block;
+  font-family: "Helvetica Neue", Helvetica, sans-serif, "Helvetica Roman";
+  font-size: 1.8rem; font-weight: 400; font-style: normal;
+  line-height: 1.4; color: rgba(0,0,0,.85);
+  word-wrap: break-word;
+}
+.bodycopy a { color: rgba(0,0,0,.85); padding-bottom: .1em; border-bottom: 0 solid rgba(127,127,127,.2); text-decoration: none; }
+.bodycopy a.image-link { border-bottom: 0; padding-bottom: 0; }
+.bodycopy small {
+  display: inline-block; font-size: 1.3rem; line-height: 1.3;
+  font-family: "Helvetica Neue", Helvetica, sans-serif, "Helvetica Roman";
+  font-weight: 400; color: rgba(0,0,0,.85);
+}
+.bodycopy small a { color: rgba(0,0,0,.85); border-bottom-width: 0; }
+.bodycopy h1 {
+  font-family: "Plex Mono", "IBM Plex Mono", monospace; font-style: italic; font-weight: 400;
+  padding: 0; margin: 0; font-size: 1.8rem; line-height: 1.3; color: rgba(0,0,0,.85);
+}
+.bodycopy table { border-collapse: separate; border-spacing: 2px; font-size: inherit; }
+.bodycopy td { padding: 1px; vertical-align: top; }
+
+/* Header (Cargo "pinned top" page): fixed, top-left, 40% wide */
+#header {
+  position: fixed; top: 0; left: 0; width: 40%; z-index: 4;
+  pointer-events: none;
+}
+#header .bodycopy { padding: 2.5rem; line-height: 1.3; }
+#header a { pointer-events: auto; position: relative; }
+
+/* Content: 60% wide, aligned right */
+#content { width: 60%; margin-left: auto; margin-right: 0; }
+#content .bodycopy { padding: 2.5rem; }
+
+
+/* Mobile site menu (Cargo site menu, mobile only) */
+#menu-btn { display: none; }
+#site-menu { display: none; }
+
+@media (max-width: 767px) {
+  html { font-size: 2.72vw; }                   /* 10.2px at 375 */
+  #header { display: none; }
+  #content { width: 100%; }
+  #content .bodycopy { padding: 1.8rem; }
+  #menu-btn {
+    display: block; position: fixed; top: 15px; right: 15px; z-index: 6;
+    width: 34px; height: 34px; padding: 6px; margin: -6px; border: 0; background: transparent;
+    cursor: pointer; color: rgba(0,0,0,.75);
+  }
+  #menu-btn svg { width: 100%; height: 100%; display: block; }
+  #site-menu.open {
+    display: flex; position: fixed; inset: 0; z-index: 10;
+    background: rgba(20,20,20,.95); color: rgba(255,255,255,.75);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 20px; font-weight: 400; padding: 20px 30px 90px 30px; box-sizing: border-box;
+    flex-direction: column; justify-content: flex-start; text-align: left;
+  }
+  #site-menu a { color: rgba(255,255,255,.75); display: block; line-height: 1.2; }
+  #site-menu a.active { opacity: .4; }
+  #site-menu .break { height: 28px; }
+  #site-menu .close {
+    position: absolute; top: 14px; right: 18px; font-size: 50px; line-height: 1em;
+    color: rgba(255,255,255,.4); background: none; border: 0; cursor: pointer; padding: 0;
+    font-family: inherit;
+  }
+}
+
+/* Contact form (Cargo's built-in contact panel) */
+#contact-overlay { display: none; position: fixed; inset: 0; z-index: 20; }
+#contact-overlay.open { display: block; }
+#contact-panel {
+  position: absolute; top: 0; right: 0; bottom: 0; width: 400px; max-width: 100%;
+  background: #222; color: rgba(255,255,255,.85); display: flex; flex-direction: column;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  font-size: 15px; box-shadow: 0 0 0 1px rgba(0,0,0,.05);
+}
+#contact-panel .row { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.08); display: flex; gap: 6px; }
+#contact-panel .lbl { color: rgba(255,255,255,.55); }
+#contact-panel input, #contact-panel textarea {
+  flex: 1; background: transparent; border: 0; color: rgba(255,255,255,.9); font: inherit; outline: 0; padding: 0;
+}
+#contact-panel input::placeholder { color: rgba(255,255,255,.75); }
+#contact-panel .note { font-size: 13px; color: rgba(255,255,255,.7); user-select: text; }
+#contact-panel .msg { flex: 1; flex-direction: column; border-bottom: 0; }
+#contact-panel textarea { resize: none; height: 100%; margin-top: 4px; }
+#contact-panel .actions { display: flex; height: 52px; }
+#contact-panel .actions button { border: 0; font: inherit; font-weight: 600; cursor: pointer; text-align: left; padding: 0 14px; }
+#contact-panel .send { flex: 0 0 70%; background: #698fff; color: #fff; }
+#contact-panel .cancel { flex: 1; background: #555; color: rgba(255,255,255,.6); font-weight: 400 !important; }
+@media (max-width: 767px) { #contact-panel { width: 100%; } }
+
+.bodycopy iframe { width: 560px; height: 315px; max-width: 100%; border: 0; vertical-align: bottom; }
+.skip { position: absolute; left: -9999px; top: 0; z-index: 30; background: #fff; padding: 8px 12px; }
+.skip:focus { left: 8px; top: 8px; }
+.site-foot { padding-top: 4rem; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+/* Cargo sizes every image to the column width (or its data-scale %), even inside <small> */
+#page { container-type: inline-size; }
+.pi { width: calc(100cqw * var(--sc, 1)); max-width: 100cqw; height: auto; border: 0; }
